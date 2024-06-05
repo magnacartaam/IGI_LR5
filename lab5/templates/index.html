@@ -1,0 +1,70 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<style>
+    .news-article {
+        margin-bottom: 20px;
+    }
+    .news-article h4 {
+        margin-bottom: 10px;
+    }
+    h4 a{
+        margin-bottom: 10px;
+        color: black;
+        text-decoration: none;
+    }
+    h4 a:hover{
+        color: gray;
+        text-decoration: underline;
+    }
+    .news-article .publish-date {
+        font-size: 0.9em;
+        color: gray;
+    }
+    .current-time p{
+            color: gray;
+            margin: 5px;
+            font-size: 0.8em;
+    }
+</style>
+    <div class="current-time">
+        <p>"{{ user_time }}"</p>
+    </div>
+    <h2>Welcome to Our Clinic</h2>
+    {% if article %}
+        <h3>You might be interested:</h3>
+        <hr>
+        <div class="news-article">
+            <h4>
+                <a href="{% url 'article' slug=article.slug %}">
+                    {{ article.title }}
+                </a>
+            </h4>
+            <p class="publish-date">Published on {{ article.published_date|date:"d.m.y" }}</p>
+            <p>{{ article.content|slice:":70" }}...</p>
+        </div>
+        <hr>
+        {% if cat_fact %}
+            <div>
+                <h4>
+                    Fun cats fact:
+                </h4>
+                <p>{{ cat_fact }}</p>
+            </div>
+            <hr>
+        {% endif %}
+        {% if covid_cases %}
+        <div>
+            <h4>
+                Covid cases in the past 7 days in England:
+            </h4>
+            <p>{{ covid_cases }}</p>
+        </div>
+        <hr>
+        {% endif %}
+    {% else %}
+        <p>No news articles available.</p>
+    {% endif %}
+{% endblock %}

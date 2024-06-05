@@ -1,0 +1,52 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Contacts{% endblock %}
+
+{% block content %}
+<style>
+    .contact {
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #1d1d1d;
+    }
+    .contact h3 {
+        margin-bottom: 10px;
+        color: #080e15;
+    }
+    .contact p {
+        margin-bottom: 10px;
+    }
+    .contacts {
+        text-align: center;
+        margin-top: 40px;
+    }
+    .profile-pic img {
+        border-radius: 50%;
+        width: 150px;
+        height: auto;
+        margin: 10px;
+    }
+</style>
+
+<h2>Our Workers</h2>
+{% if doctors %}
+    {% for doctor in doctors %}
+        <div class="contact">
+            <div class="profile-pic">
+                {% if doctor.profile_pic %}
+                    <img src="{{ doctor.profile_pic.url }}" alt="{{ doctor.first_name }}">
+                {% endif %}
+                <p>{{ article.content }}</p>
+            </div>
+            <h3>{{ doctor.first_name }} {{ doctor.last_name}} – {{ doctor.speciality }}</h3>
+            <p>{{ doctor.phone_number }}</p>
+            <p>{{ doctor.email }}</p>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>No one to contact at the moment.</p>
+{% endif %}
+<div class="contacts">
+    <p>Or contact us at info@clinic.com<p>
+</div>
+{% endblock %}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Clinic{% endblock %}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            /* max-width: 800px; */
+            margin: 0 auto;
+            flex: 1;
+        }
+        .header, .footer {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .content {
+            margin-bottom: 20px;
+        }
+        .footer {
+            margin-top: auto;
+        }
+        .footer nav a{
+            margin: 0 px;
+            color: gray;
+            margin-bottom: 10px;
+        }
+        .current-login p{
+            color: gray;
+            margin: 5px;
+            font-size: 0.6em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Clinic</h1>
+            <nav>
+                <a href="{% url 'index' %}">Home</a>
+                <a href="{% url 'news' %}">News</a>
+                <a href="{% url 'reviews' %}">Reviews</a>
+                <a href="{% url 'discounts' %}">Discounts</a>
+                <a href="{% url 'faq' %}">FAQ</a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}">Logout</a>
+                    <a href="{% url 'services' %}">Services</a>
+                    <a href="{% url 'my_appointments' %}">My Appointments</a>
+                {% else %}
+                    <a href="{% url 'login' %}">Login</a>
+                    <a href="{% url 'register_client' %}">Sign up</a>
+                {% endif %}
+            </nav>
+        </div>
+        <hr>
+        {% if user.is_authenticated %}
+            <div class="current-login">
+                <p>Signed in as "{{ user.username }}"</p>
+            </div>
+        {% endif %}
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+    <div class="footer">
+        <hr>
+        <nav>
+            <a href="{% url 'privacy_policy' %}">Privacy policy</a>
+            <a href="{% url 'contacts' %}">Contacts</a>
+            <a href="{% url 'about_us' %}">About us</a>
+            <a href="{% url 'vacancies' %}">Work for us</a>
+            {% if not user.is_authenticated %}
+                <a href="{% url 'register_doctor' %}">Sign up as Doctor</a>
+            {% endif%}
+            {% if user.is_authenticated %}
+                <a href="{% url 'stats' %}">Statistics</a>
+            {% endif%}
+        </nav>
+        <p>&copy; 2024 Clinic</p>
+    </div>
+</body>
+</html>

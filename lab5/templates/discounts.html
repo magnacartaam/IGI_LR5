@@ -1,0 +1,45 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Discounts{% endblock %}
+
+{% block content %}
+<style>
+    .is-expired{
+        font-size: 1.2em;
+        margin-bottom: 7;
+        margin-top: 7;
+        color: rgb(181, 73, 73);
+    }
+    .is-available{
+        font-size: 1.2em;
+        margin-bottom: 7;
+        margin-top: 7;
+        color: rgb(76, 169, 76);
+    }
+</style>
+    <h2>Discounts</h2>
+    {% if discounts %}
+        {% for discount in discounts %}
+            <h3>{{ discount.title }}</h3>
+            <p>{{ discount.description }}</p>
+            {% if discount.valid_until %}
+                {% if discount.is_past_due %}
+                    <div class="is-expired">
+                        <h4>{{ is_expired }}</h4>
+                    </div>
+                {% else %}
+                    <div class="is-available">
+                        <h4>Valid until: {{ discount.valid_until|date:"d.m.y" }}</h4>
+                    </div>
+                {% endif %}
+            {% else %}
+                <div class="is-available">
+                    <h4>No expiration date yet.</h4>
+                </div>
+            {% endif %}
+            <hr>
+        {% endfor %}
+    {% else %}
+        <p>No discounts currently available.</p>
+    {% endif %}
+{% endblock %}

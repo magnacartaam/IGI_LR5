@@ -1,0 +1,27 @@
+{% extends 'base/base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <style>
+        a {
+            color: gray;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .register-link {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+    <h2>{{ title }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Register</button>
+    </form>
+    <a href="{% url 'login' %}" class="register-link">Already have an account? Log in</a>
+{% endblock %}
