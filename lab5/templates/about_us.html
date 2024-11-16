@@ -5,25 +5,53 @@
 {% block content %}
 <style>
     .about-us {
+        max-width: 800px;
+        margin: 40px auto;
+    }
+    .about-us h1, .about-us h2 {
         text-align: center;
-        margin-top: 40px;
     }
-    .about-us h2 {
-        font-size: 2.5em;
-        margin-bottom: 20px;
+    .timeline {
+        position: relative;
+        padding: 20px 0;
     }
-    .about-us p {
-        font-size: 1.2em;
-        line-height: 1.6;
-        margin-bottom: 20px;
+    .timeline::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 2px;
+        background: #ccc;
     }
-</style>
+    .timeline-item {
+        margin-bottom: 30px;
+    }
+    .timeline-content {
+        position: relative;
+        width: 45%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    .timeline-item:nth-child(odd) .timeline-content {
+        left: 55%;
+    }
+   </style>
 
-<div class="about-us">
-    <h2>About Us</h2>
-    <p>{{ about_us.about_us_description }}</p>
+<section class="about-us">
+    <h1>About Us</h1>
+    
+    <section>{{ about_us.about_us_description | safe}}</section>
 
-    <h3>Contact Us</h3>
-    <p>{{ about_us.contacts_string }}</p>
-</div>
+    <section>
+        <h2>Contact Us</h2>
+        <address>
+            {{ about_us.contacts_string }}<br>
+            <a href="mailto:info@clinic.com">info@clinic.com</a><br>
+            <a href="tel:(123) 456-7890">(123) 456-7890</a>
+        </address>
+    </section>
+</section>
+
 {% endblock %}

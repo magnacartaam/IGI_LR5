@@ -1,0 +1,13 @@
+# Created by venv; see https://docs.python.org/3/library/venv.html
+.DS_Store
+lib/
+**/__pycache__/
+include/
+share/
+bin/
+obj/
+**/migrations/
+*.log
+local_settings.py
+pyvenv.cfg
+

@@ -1,70 +1,158 @@
 {% extends 'base/base.html' %}
-
+{% load static %}
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<style>
-    .news-article {
-        margin-bottom: 20px;
-    }
-    .news-article h4 {
-        margin-bottom: 10px;
-    }
-    h4 a{
-        margin-bottom: 10px;
-        color: black;
-        text-decoration: none;
-    }
-    h4 a:hover{
-        color: gray;
-        text-decoration: underline;
-    }
-    .news-article .publish-date {
-        font-size: 0.9em;
-        color: gray;
-    }
-    .current-time p{
-            color: gray;
-            margin: 5px;
-            font-size: 0.8em;
-    }
-</style>
-    <div class="current-time">
-        <p>"{{ user_time }}"</p>
+
+<header class="container">
+    <h1>Welcome to Our Clinic</h1>
+    <time datetime="{{ user_time|date:'Y-m-d' }}" class="current-time">{{ user_time }}</time>
+</header>
+
+<section class="banner-ads">
+    <div class="banner-ad">
+        <img src="{% static 'images/banner_ad_1.png' %}" alt="Banner Ad 1">
     </div>
-    <h2>Welcome to Our Clinic</h2>
+    <div class="banner-ad">
+        <img src="{% static 'images/banner_ad_4.png' %}" alt="Banner Ad 2">
+    </div>
+    <div class="banner-ad">
+        <img src="{% static 'images/banner_ad_3.png' %}" alt="Banner Ad 3">
+    </div>
+    <div class="banner-ad">
+        <img src="{% static 'images/banner_ad_2.png' %}" alt="Banner Ad 4">
+    </div>
+</section>
+
+<main class="container">
     {% if article %}
-        <h3>You might be interested:</h3>
-        <hr>
-        <div class="news-article">
-            <h4>
-                <a href="{% url 'article' slug=article.slug %}">
-                    {{ article.title }}
-                </a>
-            </h4>
-            <p class="publish-date">Published on {{ article.published_date|date:"d.m.y" }}</p>
-            <p>{{ article.content|slice:":70" }}...</p>
-        </div>
-        <hr>
-        {% if cat_fact %}
-            <div>
-                <h4>
-                    Fun cats fact:
-                </h4>
-                <p>{{ cat_fact }}</p>
-            </div>
-            <hr>
-        {% endif %}
-        {% if covid_cases %}
-        <div>
-            <h4>
-                Covid cases in the past 7 days in England:
-            </h4>
-            <p>{{ covid_cases }}</p>
-        </div>
-        <hr>
-        {% endif %}
+        <section class="section-background featured-article">
+            <h2>You might be interested:</h2>
+            <article class="news-article">
+                <h3>
+                    <a href="{% url 'article' slug=article.slug %}" target="_blank" class="news1-title">
+                        {{ article.title }}
+                    </a>
+                </h3>
+                <p class="publish-date">Published on {{ article.published_date|date:"d.m.y" }}</p>
+                <p>{{ article.content|slice:":70" }}...</p>
+            </article>
+            <a href="{% url 'news' %}">View more articles...</a>
+        </section>
     {% else %}
         <p>No news articles available.</p>
     {% endif %}
+
+    {% if covid_cases %}
+        <section class="section-background covid-info">
+            <h3>Covid cases in the past 7 days in England:</h3>
+            <p>{{ covid_cases }}</p>
+        </section>
+    {% endif %}
+    
+    <section class="benefits">
+      <p class="caption">Using our services will guarantee:</p>
+        <table class="benefits-table">
+            <colgroup>
+                <col class="benefits-col">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th colspan="4">Benefits Of Using Our Services</th>
+                </tr>
+                <tr>
+                    <th>Benefits</th>
+                    <th>Other State Clinics</th>
+                    <th>Other Private Clinics</th>
+                    <th>Our Clinic</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td headers="Benefits">Experienced Staff</td>
+                    <td class="disadvantage">✘</td>
+                    <td class="advantage" colspan="2">✔</td>
+                </tr>
+                <tr>
+                    <td headers="Benefits">Modern Equipment</td>
+                    <td class="disadvantage" colspan="2">✘</td>
+                    <td class="advantage">✔</td>
+                </tr>
+                <tr>
+                    <td headers="Benefits">Personalized Care</td>
+                    <td class="advantage" colspan="3">✔</td>
+                </tr>
+                <tr>
+                    <td headers="Benefits">Online Booking Available</td>
+                    <td class="advantage">✔</td>
+                    <td class="disadvantage">✘</td>
+                    <td class="advantage">✔</td>
+                </tr>
+                <tr>
+                    <td headers="Benefits">Convenient Location</td>
+                    <td class="disadvantage">✘</td>
+                    <td class="advantage" colspan="2">✔</td>
+                </tr>
+                <tr>
+                    <td headers="Benefits">Average Price per Service</td>
+                    <td class="advantage">$0</td>
+                    <td class="disadvantage">$169</td>
+                    <td class="advantage">$129</td>
+                </tr>
+                <tr>
+                    <td headers="Benefits">Working professors</td>
+                    <td class="disadvantage">12</td>
+                    <td class="disadvantage">16</td>
+                    <td class="advantage">23</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td class="table-footer" colspan="4">
+                        Disagree? <a href="{% url 'contacts' %}">Contact us!</a>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </section>
+
+    {% if sponsors %}
+        <section class="sponsors">
+            <h2>Our Sponsors</h2>
+            <div class="sponsor-grid">
+                {% for sponsor in sponsors %}
+                    <div class="sponsor-container">
+                        <a href="{{ sponsor.description }}">
+                            <img src="{{ sponsor.image.url }}" alt="{{ sponsor.name }}" class="sponsor-image">
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    {% endif %}
+<div class="scene">
+    <div class="building">
+        <svg class="heartAmbulance" viewBox="0 0 428 317">
+            <a href="{% url 'index' %}">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M213.037 112.292L102.149 1.28808L0.0263672 103.517L212.776 316.488L214.104 315.159L215.873 313.451L427.115 102.009L325.211 0L213.037 112.292Z"></path>
+            </a>
+        </svg>
+        <div class="sign">Clinic</div>
+        <div class="door"></div>
+    </div>
+    <div class="ground"></div>
+    <div class="person">
+        <div class="head"></div>
+        <div class="right-hand">
+            <div class="stick"></div>
+        </div>
+        <div class="left-hand"></div>
+        <div class="right-leg"></div>
+        <div class="left-leg"></div>
+    </div>
+</div>
+<div class="loader-container">
+        <div class="pill-loader"></div>
+</div>
+</main>
 {% endblock %}

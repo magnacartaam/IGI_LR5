@@ -1,0 +1,108 @@
+.faq-content {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid black;
+}
+
+.faq-content h2 {
+    color: #333;
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: -.03em;
+}
+
+details.answer {
+    margin-bottom: 20px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.7);
+    transition: all 0.3s ease;
+}
+
+details.answer:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+details.answer summary {
+    padding: 20px;
+    cursor: pointer;
+    position: relative;
+    font-size: 1.1em;
+    color: #333;
+    list-style: none;
+    transition: all 0.3s ease;
+}
+
+details.answer summary::-webkit-details-marker {
+    display: none;
+}
+
+details.answer summary::after {
+    content: '+';
+    position: absolute;
+    right: 20px;
+    color: #f35422;
+    font-size: 1.5em;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+details.answer[open] summary::after {
+    transform: rotate(45deg);
+}
+
+details.answer summary:hover {
+    background-color: rgba(243, 84, 34, 0.05);
+}
+
+details.answer summary strong {
+    font-weight: 500;
+    color: #333;
+}
+
+details.answer p {
+    padding: 0 20px 20px;
+    margin: 0;
+    line-height: 1.6;
+    color: #666;
+}
+
+.faq-content hr {
+    border: none;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.1);
+    margin: 30px 0;
+}
+
+.faq-content > p {
+    text-align: center;
+    font-style: italic;
+    color: #888;
+    margin: 40px 0;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+details.answer[open] > :not(summary) {
+    animation: slideDown 0.3s ease-in-out;
+    margin: 10px 10px;
+}
+details.answer[open] {
+  margin: 10px 10px;
+}
+

@@ -3,31 +3,12 @@
 {% block title %}Vacancies{% endblock %}
 
 {% block content %}
-<style>
-    .vacancy {
-        margin-bottom: 20px;
-        padding: 10px;
-        border: 1px solid #000000;
-    }
-    .vacancy h3 {
-        margin-bottom: 10px;
-        color: #007bff;
-    }
-    .vacancy p {
-        margin-bottom: 10px;
-    }
-    .contacts {
-        text-align: center;
-        margin-top: 40px;
-    }
-</style>
-
-<h2>Job Vacancies</h2>
+<h2 class="vacancies-header">Job Vacancies</h2>
 {% if vacancies %}
     {% for vacancy in vacancies %}
         <div class="vacancy">
-            <h3>{{ vacancy.job_name }}</h3>
-            <p>{{ vacancy.description }}</p>
+            <h3 class="job-name">{{ vacancy.job_name }}</h3>
+            <p class="vacancy-description">{{ vacancy.description }}</p>
         </div>
     {% endfor %}
 {% else %}

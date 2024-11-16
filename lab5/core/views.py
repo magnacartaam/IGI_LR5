@@ -1,8 +1,8 @@
-
 import logging
 import matplotlib
 from matplotlib import pyplot as plt
 import requests
+from django.conf import settings
 
 matplotlib.use('Agg')
 
@@ -17,7 +17,7 @@ from django.contrib import messages
 
 from django.utils import timezone
 
-from .models import Article, Discount, About, FAQ, Vacancy, User, Review, Service, Appoinment, DoctorProfile
+from .models import Article, Discount, About, FAQ, Vacancy, User, Review, Service, Appoinment, DoctorProfile, Sponsor
 from .forms import DoctorRegistrationForm, ClientRegistrationForm, UserLoginForm
 from .decorators import unauthenticated_user
 
@@ -37,24 +37,20 @@ def index(request):
     cat_fact = None
     covid_cases = None
     covid_api_url = "https://api.ukhsa-dashboard.data.gov.uk/themes/infectious_disease/sub_themes/respiratory/topics/COVID-19/geography_types/Nation/geographies/England/metrics/COVID-19_testing_PCRcountByDay"
-    api_url = "https://catfact.ninja/fact"
-    response = requests.get(api_url)
     cresponce = requests.get(covid_api_url)
-
-
-    if response.status_code == 200:
-        cat_fact = response.json()['fact']
 
     if cresponce.status_code == 200:
         covid_cases = cresponce.json()['count']
         
     article = Article.objects.order_by('published_date').last()
+    sponsors = Sponsor.objects.all()
     context = {
         'article' : article,
         'user_time' : user_time,
         'current_time' : current_time,
-        'cat_fact' : cat_fact,
-        'covid_cases' : covid_cases
+        'covid_cases' : covid_cases,
+        'MEDIA_URL': settings.MEDIA_URL,
+        'sponsors' : sponsors
     }
     logger.debug('index')
     return render(request, 'index.html', context)

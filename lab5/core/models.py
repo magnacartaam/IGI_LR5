@@ -23,6 +23,10 @@ class User(AbstractUser):
     REQUIRED_FIELDS = ['email', 'phone_number', 'first_name', 'last_name']
     USERNAME_FIELD = 'username'
 
+class Sponsor(models.Model):
+    name = models.CharField(max_length=100, null=False)
+    description = models.TextField(null=True)
+    image = models.ImageField(blank=True, null=True)
 
 class Article(models.Model):
     title = models.CharField(max_length=200, null=False)

@@ -1,0 +1,73 @@
+h2.contacts-header {
+  max-width: fit-content;
+  margin-inline: auto;
+}
+
+.contact-doctor {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 20px;
+  border: 2px solid black;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.contact-doctor:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Profile Picture */
+.profile-pic {
+  margin-bottom: 15px;
+}
+
+.profile-pic img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 2px solid black;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+/* Doctor Name and Speciality */
+.name-speciality {
+  font-size: 1.4rem;
+  color: #333;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+/* Contact Information (Phone and Email) */
+.contact-doctor p {
+  font-size: 1rem;
+  color: #555;
+  margin: 5px 0;
+}
+
+/* No Contacts Available Message */
+.contacts, .contact-doctor p:last-of-type {
+  font-size: 1rem;
+  color: #777;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Additional Contact Info */
+.contacts p {
+  color: #f35422;
+  font-weight: bold;
+}
+
+/* Profile Description */
+.contact-doctor .profile-description {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 10px;
+}

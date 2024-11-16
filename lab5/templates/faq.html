@@ -3,28 +3,18 @@
 {% block title %}FAQ{% endblock %}
 
 {% block content %}
-<style>
-    .faq-entry {
-        margin-bottom: 20px;
-    }
-    .faq-entry h3 {
-        margin-bottom: 10px;
-    }
-    .faq-entry p.answer {
-        margin-left: 20px;
-    }
-</style>
-
-<h2>Frequently Asked Questions</h2>
-{% if faqs %}
-    {% for faq in faqs %}
-        <div class="faq-entry">
-            <h3>{{ faq.question }}</h3>
-            <p class="answer">{{ faq.answer }}</p>
-        </div>
-        <hr>
-    {% endfor %}
-{% else %}
-    <p>No FAQs available.</p>
-{% endif %}
+<div class="faq-content">
+    <h2>Frequently Asked Questions</h2>
+    {% if faqs %}
+        {% for faq in faqs %}
+            <details class="answer" lang="en">
+                <summary><strong>{{ faq.question }}</strong></summary>
+                {{ faq.answer }}
+            </details>
+            <hr>
+        {% endfor %}
+    {% else %}
+        <p>No FAQs available.</p>
+    {% endif %}
+</div>
 {% endblock %}

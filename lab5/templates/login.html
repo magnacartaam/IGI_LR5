@@ -3,25 +3,11 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-<style>
-    a {
-        color: gray;
-        text-decoration: none;
-    }
-    a:hover {
-        text-decoration: underline;
-    }
-    .register-link {
-        display: block;
-        margin-top: 20px;
-        text-align: center;
-    }
-</style>
-    <h2>{{ title }}</h2>
-    <form method="post">
+    <h2 class="register-header">{{ title }}</h2>
+    <form method="post" class="register-form">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Login</button>
+        <button type="submit" class="register-button">Login</button>
     </form>
     <a href="{% url 'register_client' %}" class="register-link">Don't have an account? Sign up</a>
 {% endblock %}

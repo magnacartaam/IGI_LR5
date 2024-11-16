@@ -1,0 +1,229 @@
+.privacy-page {
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+[itemtype^="https://schema.org"] {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto auto 200px;
+    gap: 30px;
+    margin-left: 20px;
+}
+
+
+.privacy-page #privacy-article header {
+    grid-column: 1 / 3;
+    grid-row: 1 / 1;
+    text-align: center;
+    border-radius: 8px;
+    border: 2px solid black;
+    background-color: white;
+}
+
+.privacy-page header h4 {
+  color: gray;
+  font-weight: 200;
+  text-wrap-style: balance;
+  margin: 3em 15vw;
+}
+
+#information-collection ul li:nth-child(2n) {
+  color: #f35422;
+}
+
+#information-collection ul {
+  list-style-type: "\1F921";
+}
+
+#information-collection ul li::before {
+  content: " ";
+}
+
+#information-collection p::first-letter {
+  font-size: 2em;
+  font-weight: 700;
+  color: #f35422;
+}
+
+.vertical-nav {
+    position: sticky;
+    top: 70px;
+    grid-column: 3 / 3;
+    width: 100%; /* Задайте ширину в зависимости от ваших требований */
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    border: 2px solid #000;
+    backdrop-filter: blur(6px) ;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Селектор потомков для списка навигации */
+.vertical-nav ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+/* Селектор для ссылок в навигации */
+.vertical-nav a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    padding: 8px 0;
+    transition: color 0.3s;
+}
+
+.vertical-nav a:hover {
+    color: #1a73e8;
+}
+
+/* Селектор для заголовков */
+#privacy-article {
+    h1, h2, h3 {
+      text-transform: uppercase;
+      margin: 1.5em 0 1em;
+      font-variant: small-caps;
+  }
+}
+
+#privacy-article h1 {
+    font-size: 2.5em;
+    letter-spacing: 0.05em;
+}
+
+/* Селектор атрибута для параграфов с itemprop */
+p[itemprop="description"] {
+    text-indent: 2em; /* красная строка */
+    margin-bottom: 1.5em;
+    word-spacing: 0.1em;
+    letter-spacing: 0.02em;
+}
+
+/* Селектор для всех секций */
+#privacy-article section {
+    margin-bottom: 2em;
+    text-align: justify;
+    hyphens: auto;
+    word-wrap: break-word;
+}
+
+/* Селектор ID */
+#philosophy p {
+    font-variant: small-caps;
+    line-height: 2;
+    text-align: center;
+    white-space: pre-line;
+    margin-right: 10vw;
+}
+
+/* Комбинированный селектор для списков внутри listing */
+listing ul {
+    padding-left: 20px;
+    margin: 1em 0;
+}
+
+/* Селектор для изображения */
+figure {
+    grid-column: 1 / 3;
+    text-align: center;
+    margin: 2em 0;
+}
+
+figure img {
+    max-width: 100%;
+    height: auto;
+}
+
+figcaption {
+    font-style: italic;
+    margin-top: 1em;
+}
+
+/* Селектор для подвала */
+footer.privacy-footer#privacy-footer {
+    grid-column: 1 / 3;
+    text-align: center;
+    margin-top: 2em;
+    padding-top: 1em;
+    border-top: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.privacy-footer#privacy-footer a {
+  color:  #f35422;
+  text-decoration: none;
+  transition: color 0.5s;
+}
+
+.privacy-footer#privacy-footer a:hover {
+  color:  lightgray;
+  text-decoration: underline;
+}
+
+a[href^="tel"] {
+    font-family: 'Courier New', monospace;
+    text-decoration: none;
+    color: #f35422;
+}
+
+a[href^="tel"]:hover {
+    font-family: 'Courier New', monospace;
+    text-decoration: none;
+    color: lightgray;
+}
+
+@media (max-width: 768px) {
+    [itemtype^="https://schema.org"] {
+        grid-template-columns: 1fr;
+    }
+
+    .vertical-nav {
+        position: static;
+        margin-bottom: 2em;
+    }
+}
+
+.vertical-nav {
+  grid-column: 3;
+  grid-row: 1 / -1;
+}
+
+#information-collection {
+  grid-column: 1 / 1;
+  grid-row: 2 / 2;
+}
+
+#data-usage {
+  grid-column: 2 / 2;
+  grid-row: 2 / 2;
+}
+
+#data-security {
+  grid-column: 1 / 1;
+  grid-row: 3 / 3;
+}
+
+#your-rights {
+  grid-column: 2 / 2;
+  grid-row: 3 / 3;
+  word-break: break-all;
+}
+
+#download-policy {
+  grid-column: 1 / 1;
+  grid-row: 4 / 4;
+}
+
+#philosophy {
+  grid-column: 2 / 2;
+  grid-row: 4 / 4;
+}
+
+#data-retention {
+  grid-column: 1 / 1;
+  grid-row: 5 / 5;
+}

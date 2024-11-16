@@ -3,45 +3,19 @@
 {% block title %}News{% endblock %}
 
 {% block content %}
-<style>
-    .news-article {
-        margin-bottom: 20px;
-    }
-    .news-article h2 {
-        margin-bottom: 10px;
-    }
-    .news-article h2 a{
-        margin-bottom: 10px;
-        color: black;
-    }
-    .news-article img {
-        max-width: 100%;
-        height: auto;
-        margin-bottom: 10px;
-    }
-    .news-article .author {
-        font-style: italic;
-        color: gray;
-    }
-    .news-article .publish-date {
-        font-size: 0.9em;
-        color: gray;
-    }
-</style>
-
-<h2>{{article.title}}</h2>
-    <div class="news-article">
-        <p class="publish-date">Published on {{ article.published_date|date:"d.m.y" }}</p>
-        {% if article.author %}
-            <p class="author">By {{ article.author }}</p>
-        {% else %}
-            <p class="author">Unknown Author</p>
-        {% endif %}
-        <div class="news-article">
-            {% if article.image %}
-                <img src="{{ article.image.url }}" alt="{{ article.title }}">
+    <section class="padding-section">
+        <article class="news-article">
+            <h2 itemscope itemtype="http://schema.org/Article" autofocus>{{article.title}}</h2>
+            <p itemprop="datePublished" class="publish-date">Published on {{ article.published_date|date:"d.m.y" }}</p>
+            {% if article.author %}
+                <p itemprop="author" class="author">By {{ article.author }}</p>
+            {% else %}
+                <p itemprop="author" class="author">Unknown Author</p>
             {% endif %}
-            <p>{{ article.content }}</p>
-        </div>
-    </div>
+            {% if article.image %}
+                <img src="{{ article.image.url }}" alt="{{ article.title }}" class="article-preview">
+            {% endif %}
+            <p itemprop="articleBody" class="article-content-col">{{ article.content }}</p>
+        </article>
+    </section>
 {% endblock %}

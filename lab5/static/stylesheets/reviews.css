@@ -1,0 +1,138 @@
+.input-block {
+  background-color: #fff;
+  padding: 20px;
+  border: 2px solid black;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: 20px auto;
+  flex-wrap: wrap;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.input-block form {
+  display: block;
+}
+.rating-label, .opinion-label, label {
+  font-size: 1em;
+  font-weight: normal;
+  color: #333;
+  margin-top: 10px;
+  display: block;
+}
+
+.input-block input[type="text"], select.rating-stars {
+  font-weight: bolder;
+  font-stretch: semi-expanded;
+  color: black;
+}
+
+.rating-label::after {
+  content: "*";
+  color:#f35422;
+}
+
+*:disabled {
+  background-color: #f5f5f5;
+  color: grey;
+  opacity: 1;
+}
+
+*:required {
+  background-color: #f35422;
+}
+
+.rating-stars {
+  font-size: 1rem;
+  padding: 5px;
+  border: 2px solid black;
+  border-radius: 5px;
+  margin-top: 5px;
+  color: #555;
+  width: 100%;
+}
+
+.opinion-form {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 2px solid black;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.submit-button, .reset-button {
+  background-color: #f35422;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  margin-right: 10px;
+}
+
+.submit-button:hover, .reset-button:hover {
+  background-color: #d84315;
+}
+
+.submit-button:active, .reset-button:active {
+  transform: scale(0.98);
+}
+
+.review {
+  background-color: #fff;
+  padding: 20px;
+  margin: 20px auto;
+  border: 2px solid black;
+  border-radius: 10px;
+  max-width: 600px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.review:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.review h3 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.review p {
+  font-size: 1rem;
+  color: #555;
+  margin: 10px 0;
+}
+
+.contacts {
+  text-align: center;
+  font-size: 1rem;
+  color: #333;
+  margin-top: 30px;
+}
+
+.contacts p {
+  color: #f35422;
+  font-weight: bold;
+}
+
+/* Media Elements (Video & Audio) */
+video, audio {
+  display: block;
+  margin: 20px auto;
+  border: 2px solid black;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+video {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+}

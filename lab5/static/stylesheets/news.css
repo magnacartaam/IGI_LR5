@@ -1,0 +1,124 @@
+/* Добавляем стили для контейнера section */
+section.new {
+    display: grid;
+    grid-template-columns: repeat( auto-fill, 540px);
+    gap: 30px;
+    padding: 20px;
+    justify-content: center;
+}
+
+.padding-section {
+  padding: 30px;
+}
+
+.news1-article {
+    display: inline-block;
+    background: #fff;
+    border-radius: 8px;
+    border: 2px solid black;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.news1-article header h2 {
+    margin: 0 0 15px 0;
+ }
+
+a.news1-title {
+    width: 496px;
+    display: inline-block;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+a.news1-title:hover {
+    color: #f35422;
+}
+
+.news1-article img {
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 2px solid black;
+    border-radius: 8px;
+}
+
+.news1-article .author {
+    color: #666;
+    font-style: italic;
+    margin-bottom: 5px;
+}
+
+.news1-article .publish-date {
+    color: #888;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+
+.news1-article p:not(.author):not(.publish-date) {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 15px;
+}
+
+.article-content-col {
+  columns: 2;
+  text-indent: 2em;
+  line-height: 1.7em;
+}
+
+.article-preview {
+  float: left;
+  clear: none;
+  max-height: 420px;
+  margin-right: 20px;
+}
+
+.read-more {
+    display: inline-block;
+    padding: 8px 20px;
+    background-color: #f35422;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+}
+
+.read-more::after {
+    content: "Read more";
+}
+
+.read-more:hover {
+    background-color: black;
+    color: white;
+}
+
+@media (max-width: 992px) {
+    section {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    section {
+        grid-template-columns: 1fr; /* Одна колонка на маленьких экранах */
+    }
+    .news1-article.expanded p:not(.author):not(.publish-date) {
+        column-count: 1;
+    }
+}
+
+

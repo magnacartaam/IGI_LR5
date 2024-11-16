@@ -1,95 +1,97 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="300">
     <title>{% block title %}Clinic{% endblock %}</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: #007bff;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        .container {
-            /* max-width: 800px; */
-            margin: 0 auto;
-            flex: 1;
-        }
-        .header, .footer {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .content {
-            margin-bottom: 20px;
-        }
-        .footer {
-            margin-top: auto;
-        }
-        .footer nav a{
-            margin: 0 px;
-            color: gray;
-            margin-bottom: 10px;
-        }
-        .current-login p{
-            color: gray;
-            margin: 5px;
-            font-size: 0.6em;
-        }
-    </style>
+
+
+    <link rel="shortcut icon" href="{% static 'favicon/favicon.ico' %}?v=2">
+    <link rel="stylesheet" href="{% static 'stylesheets/base.css'%}?v=11"> 
+    <link rel="stylesheet" href="{% static 'stylesheets/about_us.css'%}?v=2"> 
+    <link rel="stylesheet" href="{% static 'stylesheets/certificate.css'%}?v=4"> 
+    <link rel="stylesheet" href="{% static 'stylesheets/index.css'%}?v=10"> 
+    <link rel="stylesheet" href="{% static 'stylesheets/privacy_policy.css'%}?v=9"> 
+    <link rel="stylesheet" href="{% static 'stylesheets/contacts.css'%}?v=10"> 
+    <link rel="stylesheet" href="{% static 'stylesheets/discounts.css'%}?v=8"> 
+    <link rel="stylesheet" href="{% static 'stylesheets/faq.css'%}?v=8"> 
+    <link rel="stylesheet" href="{% static 'stylesheets/reviews.css'%}?v=9"> 
+    <link rel="stylesheet" href="{% static 'stylesheets/services.css'%}?v=8"> 
+    <link rel="stylesheet" href="{% static 'stylesheets/vacancies.css'%}?v=8"> 
+    <link rel="stylesheet" href="{% static 'stylesheets/news.css'%}?v=13"> 
+    <link rel="stylesheet" href="{% static 'stylesheets/my_appointments.css'%}?v=8"> 
+    <link rel="stylesheet" href="{% static 'stylesheets/login.css'%}?v=7"> 
+    <link rel="stylesheet" href="{% static 'stylesheets/stats.css'%}?v=7"> 
+    <link rel="stylesheet" href="{% static 'stylesheets/register.css'%}?v=8"> 
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@200;300;500;700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Pinyon+Script&display=swap" rel="stylesheet">
+    {% block extra_head %}{% endblock %}
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Clinic</h1>
-            <nav>
-                <a href="{% url 'index' %}">Home</a>
-                <a href="{% url 'news' %}">News</a>
-                <a href="{% url 'reviews' %}">Reviews</a>
-                <a href="{% url 'discounts' %}">Discounts</a>
-                <a href="{% url 'faq' %}">FAQ</a>
-                {% if user.is_authenticated %}
-                    <a href="{% url 'logout' %}">Logout</a>
-                    <a href="{% url 'services' %}">Services</a>
-                    <a href="{% url 'my_appointments' %}">My Appointments</a>
-                {% else %}
-                    <a href="{% url 'login' %}">Login</a>
-                    <a href="{% url 'register_client' %}">Sign up</a>
-                {% endif %}
-            </nav>
-        </div>
-        <hr>
-        {% if user.is_authenticated %}
-            <div class="current-login">
-                <p>Signed in as "{{ user.username }}"</p>
+    <header class="main-header">
+        <div class="mainnav">
+            <div class="leftnav">
+                <svg class="heart" viewBox="0 0 428 317">
+                  <a href="{% url 'index' %}">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M213.037 112.292L102.149 1.28808L0.0263672 103.517L212.776 316.488L214.104 315.159L215.873 313.451L427.115 102.009L325.211 0L213.037 112.292Z"></path>
+                  </a>
+                </svg>
+                <nav>
+                    <ul>
+                        <li class="leftnav-item" ><a href="{% url 'news' %}">News</a></li>
+                        <li class="leftnav-item" ><a href="{% url 'reviews' %}">Reviews</a></li>
+                        <li class="leftnav-item" ><a href="{% url 'discounts' %}">Discounts</a></li>
+                        <li class="leftnav-item" ><a href="{% url 'faq' %}">FAQ</a></li>
+                        {% if user.is_authenticated %}
+                            <li class="leftnav-item" ><a href="{% url 'services' %}">Services</a></li>
+                        {% else %}
+                            <li class="leftnav-item" ><a href="{% url 'login' %}">Services</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
             </div>
-        {% endif %}
-        <div class="content">
-            {% block content %}{% endblock %}
+            <div class="rightnav">
+                <nav>
+                    <ul>
+                        {% if user.is_authenticated %}
+                            <li class="rightnav-item-black" ><a class="rightnav-link" href="{% url 'logout' %}">Logout</a></li>
+                            <li class="rightnav-item-orange" ><a class="rightnav-link" href="{% url 'my_appointments' %}">My Appointments</a></li>
+                        {% else %}
+                            <li class="rightnav-item-black" ><a class="rightnav-link" href="{% url 'login' %}">Login</a></li>
+                        {% endif %}               
+                    </ul>
+                </nav>
+            </div>
         </div>
-    </div>
-    <div class="footer">
-        <hr>
+    </header>
+    {% if user.is_authenticated %}
+        <aside class="current-login">
+            <p>Signed in as "{{ user.username }}"</p>
+        </aside>
+    {% endif %}
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
         <nav>
-            <a href="{% url 'privacy_policy' %}">Privacy policy</a>
-            <a href="{% url 'contacts' %}">Contacts</a>
-            <a href="{% url 'about_us' %}">About us</a>
-            <a href="{% url 'vacancies' %}">Work for us</a>
-            {% if not user.is_authenticated %}
-                <a href="{% url 'register_doctor' %}">Sign up as Doctor</a>
-            {% endif%}
-            {% if user.is_authenticated %}
-                <a href="{% url 'stats' %}">Statistics</a>
-            {% endif%}
+            <ul class="footer-links">
+                <li><a href="{% url 'privacy_policy' %}">Privacy policy</a></li>
+                <li><a href="{% url 'contacts' %}">Contacts</a></li>
+                <li><a href="{% url 'about_us' %}">About us</a></li>
+                <li><a href="{% url 'vacancies' %}">Work for us</a></li>
+                {% if not user.is_authenticated %}
+                    <li><a href="{% url 'register_doctor' %}">Sign up as Doctor</a></li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'stats' %}">Statistics</a></li>
+                {% endif %}
+            </ul>
         </nav>
         <p>&copy; 2024 Clinic</p>
-    </div>
+    </footer>
 </body>
 </html>

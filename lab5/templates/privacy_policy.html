@@ -1,8 +1,99 @@
 {% extends 'base/base.html' %}
+{% load static %}
 
-{% block title %}Privacy policy{% endblock %}
+{% block title %}Privacy Policy{% endblock %}
 
 {% block content %}
-    <h2>Privacy policy</h2>
-    <p>We don't have one yet.</p>
+<div class="privacy-page">
+
+    <article itemscope itemtype="https://schema.org/Organization" id="privacy-article">
+        <header>
+            <h1 itemprop="name">Clinic Privacy Policy</h1>
+            <h4>This privacy policy and our related Privacy Notices (see below) describe how we collect, use, protect, share and transfer information about you that we collect when you use any of our products and services, our websites, or apps or otherwise interact with us or with our Network (Services). It also includes information about how we handle information on California residents under the CCPA.
+
+“Personal data” in this policy, includes “personal information,” as it is defined under the CCPA.
+
+Personal data is any information about you by which you can be identified or be identifiable (either on its own or when combined with other information). This can include information such as: your name, email address and username; information about your device (e.g., IP address); and information relating to how you use and interact with our sites, apps and services.
+
+We have set out below an overview of how our privacy notices work. Depending on how you interact with us, we will collect and process your personal information in accordance with this Privacy Policy and any applicable other privacy notice(s).</h2>
+        </header>
+
+        <nav class="vertical-nav">
+            <h3>Navigation</h3>
+            <ul>
+                <li><a href="#information-collection">Information Collection</a></li>
+                <li><a href="#data-usage">How We Use Your Data</a></li>
+                <li><a href="#data-security">Data Security</a></li>
+                <li><a href="#your-rights">Your Rights</a></li>
+                <li><a href="#download-policy">Download Privacy Policy</a></li>
+                <li><a href="#philosophy">Our Philosophy in Four Lines</a></li>
+                <li><a href="#data-retention">Data Retention</a></li>
+            </ul>
+        </nav>
+
+        <section id="information-collection">
+            <h2>Information Collection</h2>
+            <p itemprop="description">We collect personal information such as your name, email address, phone number, and medical history when you interact with our website or services.</p>
+            <listing>
+                <h3>Data we may collect:</h3>
+                <ul>
+                    <li itemprop="email">Email Address</li>
+                    <li itemprop="telephone">Phone Number</li>
+                    <li>Medical History</li>
+                    <li>IP Address</li>
+                    <li>Usage Data</li>
+                </ul>
+            </listing>
+        </section>
+
+        <section id="data-usage">
+            <h2>How We Use Your Data</h2>
+            <p>We use the collected data to provide, maintain, and improve our services. This includes:</p>
+            <ul>
+                <li>Scheduling appointments</li>
+                <li>Improving website user experience</li>
+                <li>Providing personalized health recommendations</li>
+            </ul>
+            <p>We may share your data with third-party service providers only to improve our services. We never sell or rent your personal data.</p>
+        </section>
+
+        <section id="data-security">
+            <h2>Data Security</h2>
+            <p>We are committed to ensuring that your information is secure. To prevent unauthorized access, we have put in place suitable physical, electronic, and managerial procedures.</p>
+        </section>
+
+        <section id="your-rights">
+            <h2>Your Rights</h2>
+            <p>You have the right to access, update, or delete your personal data at any time. For more information, please refer to our Terms of Service.</p>
+        </section>
+
+        <section id="download-policy">
+            <h2>Download Privacy Policy</h2>
+            <p>You can <a href="{% static 'files/privacy_policy.pdf' %}" download="Privacy_Policy">download the PDF version</a> of this privacy policy for future reference.</p>
+        </section>
+
+        <section id="philosophy">
+            <h2>Our Philosophy in Four Lines</h2>
+            <p>We protect your data day and night,<br>
+            Ensuring your privacy, with all our might,<br>
+            No need to worry or be in fright,<br>
+            Your information is safe, always right.</p>
+        </section>
+
+        <section id="data-retention">
+            <h2>Data Retention</h2>
+            <p>We retain your personal data only as long as necessary to provide our services. Once no longer needed, we securely delete or anonymize your data.</p>
+        </section>
+
+        <figure>
+            <img src="{% static 'images/data_protection.png' %}" alt="Data Protection">
+            <figcaption>Our clinic's commitment to data protection.</figcaption>
+        </figure>
+
+        <footer class="privacy-footer" id="privacy-footer">
+            <p>For further inquiries, visit our <a href="{% url 'contacts' %}">Contact Page</a> or call us at <a href="tel:+123456789">+1 234 567 89</a>.</p>
+        </footer>
+    </article>
+</div>
+
 {% endblock %}

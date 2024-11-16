@@ -3,20 +3,7 @@
 {% block title %}Discounts{% endblock %}
 
 {% block content %}
-<style>
-    .is-expired{
-        font-size: 1.2em;
-        margin-bottom: 7;
-        margin-top: 7;
-        color: rgb(181, 73, 73);
-    }
-    .is-available{
-        font-size: 1.2em;
-        margin-bottom: 7;
-        margin-top: 7;
-        color: rgb(76, 169, 76);
-    }
-</style>
+  <div class="discount-content">
     <h2>Discounts</h2>
     {% if discounts %}
         {% for discount in discounts %}
@@ -42,4 +29,5 @@
     {% else %}
         <p>No discounts currently available.</p>
     {% endif %}
+  </div>
 {% endblock %}

@@ -40,7 +40,7 @@ class DoctorRegistrationForm(UserCreationForm):
 
 
 class ClientRegistrationForm(UserCreationForm):
-    age = forms.IntegerField(required=True)
+    age = forms.IntegerField(required=True, min_value=18, max_value=100)
     first_name = forms.CharField(max_length=30, required=True)
     last_name = forms.CharField(max_length=30, required=True)
     phone_number = forms.CharField(max_length=15, required=True)

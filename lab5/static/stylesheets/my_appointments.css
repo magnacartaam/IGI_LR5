@@ -1,0 +1,78 @@
+
+.appointments-header {
+  font-size: 2rem;
+  color: #f35422;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.appointment {
+  background-color: #fff;
+  padding: 20px;
+  border: 2px solid black;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.appointment:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.appointment h3 {
+  font-size: 1.4rem;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.appointment p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+  margin: 5px 0;
+}
+
+.appointment form {
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.appointment button {
+  background-color: #000;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  margin-right: 10px;
+}
+
+.appointment button:hover {
+  background-color: #d84315;
+}
+
+.appointment button:active {
+  transform: scale(0.98);
+}
+
+.appointment .delete {
+  background-color: #e74c3c;
+}
+
+.appointment .delete:hover {
+  background-color: #c0392b;
+}
+
+.appointment h4 {
+  font-size: 1rem;
+  color: #f35422;
+  font-weight: bold;
+  margin-top: 15px;
+}
