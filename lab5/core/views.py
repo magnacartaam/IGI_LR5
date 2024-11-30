@@ -1,8 +1,10 @@
 import logging
+from django.urls import reverse
 import matplotlib
 from matplotlib import pyplot as plt
 import requests
 from django.conf import settings
+from django.middleware.csrf import get_token
 
 matplotlib.use('Agg')
 
@@ -318,3 +320,42 @@ def cleaner_graph():
     plt.savefig("./media/cleaner_graph.png")
     return "./media/cleaner_graph.png"
 
+
+def managment(request):
+    doctors = User.objects.filter(groups__name='doctor')
+    context = {
+        'doctors' : doctors
+    }
+    return render(request, 'managment.html', context)
+
+
+def some_tasks(request):
+    return render(request, 'some_tasks.html')
+
+
+import json
+from django.shortcuts import render
+
+def services_view(request):
+    services = Service.objects.all()
+    services_data = []
+    
+    for service in services:
+        services_data.append({
+            'id': service.id,
+            'name': service.name,
+            'price': float(service.price),  # Ensure proper number conversion
+            'description': service.description,
+            'doctor_first_name': service.doctor_id.user_id.first_name,
+            'doctor_last_name': service.doctor_id.user_id.last_name,
+            'can_book': (request.user.is_authenticated and 
+                         not request.user.groups.filter(name='Doctor').exists())
+        })
+    
+    return render(request, 'services.html', {
+        'services': services,
+        'services_json': json.dumps(services_data)
+    })
+
+
+#------------------------------------------------------------------------------

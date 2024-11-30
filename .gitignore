@@ -1,1 +1,16 @@
 /.DS_Store
+.DS_Store
+lib/
+**/__pycache__/
+__pycache__/
+include/
+share/
+bin/
+obj/
+**/migrations/
+migrations/
+*.log
+local_settings.py
+debug.log
+pyvenv.cfg
+**/debug.log

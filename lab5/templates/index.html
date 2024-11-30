@@ -3,26 +3,106 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Age Verification</title>
+    <style>
+        #ageModal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
 
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        #dobInput {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        .btn {
+            background-color: #f35422;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+<div id="ageModal">
+    <div class="modal-content">
+        <h2>Age Verification</h2>
+        <p>Please enter your date of birth:</p>
+        <input type="date" id="dobInput" required>
+        <button class="btn" onclick="verifyAge()">Submit</button>
+        </div>
+    </div>
+</div>
 <header class="container">
     <h1>Welcome to Our Clinic</h1>
     <time datetime="{{ user_time|date:'Y-m-d' }}" class="current-time">{{ user_time }}</time>
+    <div class="countdown"></div>
 </header>
 
-<section class="banner-ads">
-    <div class="banner-ad">
-        <img src="{% static 'images/banner_ad_1.png' %}" alt="Banner Ad 1">
-    </div>
-    <div class="banner-ad">
-        <img src="{% static 'images/banner_ad_4.png' %}" alt="Banner Ad 2">
-    </div>
-    <div class="banner-ad">
-        <img src="{% static 'images/banner_ad_3.png' %}" alt="Banner Ad 3">
-    </div>
-    <div class="banner-ad">
-        <img src="{% static 'images/banner_ad_2.png' %}" alt="Banner Ad 4">
-    </div>
-</section>
+<div id="slider-container"></div>
+
+<!-- Form to adjust parameters -->
+<form id="slider-config">
+  <label>
+    Loop:
+    <select name="loop">
+      <option value="true">True</option>
+      <option value="false">False</option>
+    </select>
+  </label>
+  <label>
+    Navigation:
+    <select name="navs">
+      <option value="true">True</option>
+      <option value="false">False</option>
+    </select>
+  </label>
+  <label>
+    Pagination:
+    <select name="pagination">
+      <option value="true">True</option>
+      <option value="false">False</option>
+    </select>
+  </label>
+  <label>
+    Delay (ms):
+    <input type="number" name="delay" value="5000" />
+  </label>
+  <label>
+    Stop on Hover:
+    <select name="stopMouseHover">
+      <option value="true">True</option>
+      <option value="false">False</option>
+    </select>
+  </label>
+  <button type="submit">Update Slider</button>
+</form>
 
 <main class="container">
     {% if article %}
@@ -155,4 +235,10 @@
         <div class="pill-loader"></div>
 </div>
 </main>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/slider.js' %}"></script>
+    <script src="{% static 'js/timer.js' %}"></script>
+    <script src="{% static 'js/age_modal.js' %}"></script>
 {% endblock %}

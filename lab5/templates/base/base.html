@@ -12,13 +12,13 @@
     <link rel="stylesheet" href="{% static 'stylesheets/base.css'%}?v=11"> 
     <link rel="stylesheet" href="{% static 'stylesheets/about_us.css'%}?v=2"> 
     <link rel="stylesheet" href="{% static 'stylesheets/certificate.css'%}?v=4"> 
-    <link rel="stylesheet" href="{% static 'stylesheets/index.css'%}?v=10"> 
+    <link rel="stylesheet" href="{% static 'stylesheets/index.css'%}?v=11"> 
     <link rel="stylesheet" href="{% static 'stylesheets/privacy_policy.css'%}?v=9"> 
     <link rel="stylesheet" href="{% static 'stylesheets/contacts.css'%}?v=10"> 
     <link rel="stylesheet" href="{% static 'stylesheets/discounts.css'%}?v=8"> 
     <link rel="stylesheet" href="{% static 'stylesheets/faq.css'%}?v=8"> 
     <link rel="stylesheet" href="{% static 'stylesheets/reviews.css'%}?v=9"> 
-    <link rel="stylesheet" href="{% static 'stylesheets/services.css'%}?v=8"> 
+    <link rel="stylesheet" href="{% static 'stylesheets/services.css'%}?v=9"> 
     <link rel="stylesheet" href="{% static 'stylesheets/vacancies.css'%}?v=8"> 
     <link rel="stylesheet" href="{% static 'stylesheets/news.css'%}?v=13"> 
     <link rel="stylesheet" href="{% static 'stylesheets/my_appointments.css'%}?v=8"> 
@@ -73,7 +73,7 @@
             <p>Signed in as "{{ user.username }}"</p>
         </aside>
     {% endif %}
-    <main>
+    <main class="content">
         {% block content %}{% endblock %}
     </main>
     <footer>
@@ -88,10 +88,13 @@
                 {% endif %}
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'stats' %}">Statistics</a></li>
+                    <li><a href="{% url 'more_data' %}">More Data</a></li>
+                    <li><a href="{% url 'managment' %}">Managment</a></li>
                 {% endif %}
             </ul>
         </nav>
         <p>&copy; 2024 Clinic</p>
     </footer>
+    {% block scripts %}{% endblock %}
 </body>
 </html>
